@@ -555,7 +555,7 @@ MonoBehaviour:
   cameraPivotTransform: {fileID: 198560615}
   lookSpeed: 0.1
   followSpeed: 0.1
-  pivotSpeed: 0.03
+  pivotSpeed: 0.1
 --- !u!1 &1705419243
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +663,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 730611317}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1728056521 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: e47f0386eba8322488c5de540142faee,
+    type: 3}
+  m_PrefabInstance: {fileID: 730611317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1728056522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,5 +681,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712099f91e49a094cb4198a6293bc4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 1728056521}
   canRotate: 1
