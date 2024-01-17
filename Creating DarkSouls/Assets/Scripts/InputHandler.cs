@@ -24,7 +24,8 @@ namespace DS
             cameraHandler = CameraHandler.singleton;
         }
 
-        private void Update()
+        //before Update  fix jitter?
+        private void FixedUpdate()
         {
             float delta = Time.fixedDeltaTime;
 
