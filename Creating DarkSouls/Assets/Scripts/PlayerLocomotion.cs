@@ -58,6 +58,8 @@ namespace DS
             float moveOverride = inputHandler.moveAmount;
 
             targetDir = cameraObject.forward * inputHandler.vertical;
+            targetDir += cameraObject.right * inputHandler.horizontal;
+
             targetDir.Normalize();
             targetDir.y = 0;
 
