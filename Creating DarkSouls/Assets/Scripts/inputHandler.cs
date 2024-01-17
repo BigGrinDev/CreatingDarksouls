@@ -45,6 +45,5 @@ namespace DS
             mouseY = cameraInput.y;
         }
     }
-
 }
 
