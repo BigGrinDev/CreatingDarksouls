@@ -13,6 +13,7 @@ namespace DS
         public float mouseY;
 
         PlayerControls inputActions;
+
         Vector2 movementInput;
         Vector2 cameraInput;
 
@@ -24,6 +25,7 @@ namespace DS
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             }
+
             inputActions.Enable();
         }
         private void OnDisable()

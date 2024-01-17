@@ -6,7 +6,7 @@ namespace DS
 {
     public class PlayerLocomotion : MonoBehaviour
     {
-        [SerializeField] Transform cameraObject;
+        Transform cameraObject;
         InputHandler inputHandler;
         Vector3 moveDirection;
 
