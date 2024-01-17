@@ -10,8 +10,8 @@ namespace DS
         InputHandler inputHandler;
         Vector3 moveDirection;
 
-        [HideInInspector]
-        public Transform myTransform;
+        [HideInInspector] public Transform myTransform;
+        [HideInInspector] public AnimatorHandler animatorHandler;
 
 
         public new Rigidbody rigidbody;
@@ -27,8 +27,10 @@ namespace DS
          {
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
+            animatorHandler.GetComponentInChildren<Animator>();
             cameraObject = Camera.main.transform;
             myTransform = transform;
+            animatorHandler.Initialize();
 
          }
 
@@ -46,6 +48,11 @@ namespace DS
 
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
             rigidbody.velocity = projectedVelocity;
+
+            if(animatorHandler.canRotate)
+            {
+                HandleRotation(delta);
+            }
          }
 
         #region Movement
