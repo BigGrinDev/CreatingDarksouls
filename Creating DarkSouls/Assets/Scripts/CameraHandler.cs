@@ -41,10 +41,10 @@ public class CameraHandler : MonoBehaviour
     }
 
     public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
-    {  //before lookAngle += (mouseXInput * lookSpeed) * delta;  fix jitter?
-       //before pivotAngle -= (mouseYInput * pivotSpeed) * delta;
-        lookAngle += (mouseXInput * lookSpeed) / delta;
-        pivotAngle -= (mouseYInput * pivotSpeed) / delta;
+    {  //before lookAngle += (mouseXInput * lookSpeed) / delta;
+       //before pivotAngle -= (mouseYInput * pivotSpeed) / delta;
+        lookAngle += (mouseXInput * lookSpeed) * delta;
+        pivotAngle -= (mouseYInput * pivotSpeed) * delta;
         pivotAngle = Mathf.Clamp(pivotAngle, minimumPivot,maximumPivot);
 
 
