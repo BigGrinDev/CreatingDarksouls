@@ -18,7 +18,7 @@ namespace DS
         public GameObject normalCamera;
 
         [Header("Stats")]
-        [SerializeField] float movementSped = 5;
+        [SerializeField] float movementSpeed = 5;
         [SerializeField] float rotationSpeed = 10;
 
 
@@ -32,7 +32,21 @@ namespace DS
 
          }
 
+         private void Update()
+         {
+            float delta = Time.deltaTime;
 
+            inputHandler.TickInput(delta);
+
+            moveDirection = cameraObject.forward * inputHandler.vertical;
+            moveDirection += cameraObject.right * inputHandler.horizontal;
+
+            float speed = movementSpeed;
+            moveDirection *= speed;
+
+            Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
+            rigidbody.velocity = projectedVelocity;
+         }
 
         #region Movement
         Vector3 normalVector;

@@ -33,7 +33,7 @@ namespace DS
 
         public void TickInput(float delta)
         {
-
+            MoveInput(delta);
         }
 
         private void MoveInput(float delta)
