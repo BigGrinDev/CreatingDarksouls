@@ -18,7 +18,7 @@ public class CameraHandler : MonoBehaviour
     public float pivotSpeed = 0.03f;
 
     private float defaultPosition;
-    private float lookingAngle;
+    private float lookAngle;
     private float pivotAngle;
     private float minimumPivot = -35;
     private float maximumPivot = 35;
@@ -40,13 +40,13 @@ public class CameraHandler : MonoBehaviour
 
     public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
     {
-        lookingAngle += (mouseXInput * lookSpeed) / delta;
+        lookAngle += (mouseXInput * lookSpeed) / delta;
         pivotAngle -= (mouseYInput * pivotSpeed) / delta;
         pivotAngle = Mathf.Clamp(pivotAngle, minimumPivot,maximumPivot);
 
 
         Vector3 rotation = Vector3.zero;
-        rotation.y = lookingAngle;
+        rotation.y = lookAngle;
         Quaternion targetRotation = Quaternion.Euler(rotation);
         myTransform.rotation = targetRotation;
 
