@@ -18,7 +18,7 @@ namespace DS
 
         public void OnEnable()
         {
-            if(inputActions == null)
+            if (inputActions == null)
             {
                 inputActions = new PlayerControls();
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
