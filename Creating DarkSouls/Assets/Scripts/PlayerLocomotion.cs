@@ -6,7 +6,7 @@ namespace DS
 {
     public class PlayerLocomotion : MonoBehaviour
     {
-        Transform cameraObject;
+        [SerializeField] Transform cameraObject;
         InputHandler inputHandler;
         Vector3 moveDirection;
 
@@ -27,14 +27,14 @@ namespace DS
          {
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
-            animatorHandler.GetComponentInChildren<Animator>();
+            animatorHandler = GetComponentInChildren<AnimatorHandler>();
             cameraObject = Camera.main.transform;
             myTransform = transform;
             animatorHandler.Initialize();
 
          }
 
-         private void Update()
+         public void Update()
          {
             float delta = Time.deltaTime;
 
@@ -42,6 +42,7 @@ namespace DS
 
             moveDirection = cameraObject.forward * inputHandler.vertical;
             moveDirection += cameraObject.right * inputHandler.horizontal;
+            moveDirection.Normalize();
 
             float speed = movementSpeed;
             moveDirection *= speed;
