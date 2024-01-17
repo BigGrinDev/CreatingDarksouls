@@ -44,5 +44,16 @@ public class CameraHandler : MonoBehaviour
         pivotAngle -= (mouseYInput * pivotSpeed) / delta;
         pivotAngle = Mathf.Clamp(pivotAngle, minimumPivot,maximumPivot);
 
+
+        Vector3 rotation = Vector3.zero;
+        rotation.y = lookingAngle;
+        Quaternion targetRotation = Quaternion.Euler(rotation);
+        myTransform.rotation = targetRotation;
+
+        rotation = Vector3.zero;
+        rotation.x = pivotAngle;
+
+        targetRotation = Quaternion.Euler(rotation);
+        cameraPivotTransform.localRotation = targetRotation;
     }
 }
