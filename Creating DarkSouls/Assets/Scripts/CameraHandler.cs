@@ -29,6 +29,20 @@ public class CameraHandler : MonoBehaviour
         myTransform = transform;
         defaultPosition = cameraTransform.localPosition.z;
         ignoreLayers = ~(1 << 8 | 1 << 9 | 1 << 10);
+    }
+
+    public void FollowTarget(float delta)
+    {
+        Vector3 targetPosition = Vector3.Lerp(myTransform.position, targetTransform.position, delta / followSpeed);
+        myTransform.position = targetPosition;
+
+    }
+
+    public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
+    {
+        lookingAngle += (mouseXInput * lookSpeed) / delta;
+        pivotAngle -= (mouseYInput * pivotSpeed) / delta;
+        pivotAngle = Mathf.Clamp(pivotAngle, minimumPivot,maximumPivot);
 
     }
 }
