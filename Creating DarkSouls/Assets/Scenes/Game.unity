@@ -553,9 +553,9 @@ MonoBehaviour:
   targetTransform: {fileID: 1705419244}
   cameraTransform: {fileID: 963194228}
   cameraPivotTransform: {fileID: 198560615}
-  lookSpeed: 0.1
-  followSpeed: 0.1
-  pivotSpeed: 0.1
+  lookSpeed: 150
+  followSpeed: 0.004
+  pivotSpeed: 150
 --- !u!1 &1705419243
 GameObject:
   m_ObjectHideFlags: 0
