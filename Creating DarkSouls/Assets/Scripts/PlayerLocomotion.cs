@@ -40,6 +40,7 @@ namespace DS
 
             inputHandler.TickInput(delta);
             HandleMovement(delta);
+            HandleRollingAndSprinting(delta);
 
 
          }
@@ -89,6 +90,32 @@ namespace DS
             {
                 HandleRotation(delta);
             }
+        }
+
+        public void HandleRollingAndSprinting(float delta)
+        {
+            if (animatorHandler.anim.GetBool("isInteracting"))
+                return;
+            
+            if(inputHandler.rollFlag)
+            {
+                moveDirection = cameraObject.forward * inputHandler.vertical;
+                moveDirection += cameraObject.right * inputHandler.horizontal;
+
+                if(inputHandler.moveAmount > 0)
+                {
+                    animatorHandler.PlayTargetAnimation("Rolling", true);
+                    moveDirection.y = 0;
+                    Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
+                    myTransform.rotation = rollRotation;
+                }
+                else
+                {
+                    animatorHandler.PlayTargetAnimation("Backstep", true);
+                }
+            }
+
+
         }
 
         #endregion
