@@ -107,9 +107,9 @@
             "id": "74ad2e5a-68c6-4691-8f95-4549c6e297f9",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Roll",
                     "type": "Button",
-                    "id": "f6ea8e8d-3897-478a-89e8-058a918db3cd",
+                    "id": "8af69b14-6384-45ae-91a9-9d071881d84d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -118,12 +118,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "91ee82f1-694b-4820-a475-0dbd919fbd1e",
-                    "path": "",
+                    "id": "65227039-b08d-43f9-9942-35dcd19c084b",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5157c68-9bee-4dc2-823d-4d2644251f3b",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
