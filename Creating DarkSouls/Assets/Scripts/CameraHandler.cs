@@ -86,8 +86,8 @@ namespace DS
             {
                 targetPosition = -minimumCollisionOffset;
             }
-
-            cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
+            //try smoothdamp!
+            cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.002f);
             cameraTransform.localPosition = cameraTransformPosition;
         }
     }

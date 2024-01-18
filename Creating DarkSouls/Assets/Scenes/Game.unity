@@ -72,7 +72,7 @@ LightmapSettings:
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
-    m_BakeBackend: 1
+    m_BakeBackend: 2
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
@@ -576,10 +576,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7764487651825262745, guid: d421ea220ae443e45b60a3a8bf7dc77e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3685692520585564748, guid: d421ea220ae443e45b60a3a8bf7dc77e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1283408554089789195, guid: d421ea220ae443e45b60a3a8bf7dc77e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d421ea220ae443e45b60a3a8bf7dc77e,
         type: 3}
       propertyPath: m_Name
       value: Paladin WProp J Nordstrom@Sword And Shield Slash
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051571768989249988, guid: d421ea220ae443e45b60a3a8bf7dc77e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: d421ea220ae443e45b60a3a8bf7dc77e,
         type: 3}
