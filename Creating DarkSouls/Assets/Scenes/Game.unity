@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8166993ab9cf10647a777feea860ce4e,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -320,7 +321,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 8.83e-43, y: 1.39e-43, z: 0, w: -1.1091665e+10}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -950,7 +951,9 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   normalCamera: {fileID: 0}
   movementSpeed: 5
+  sprintSpeed: 7
   rotationSpeed: 10
+  isSprinting: 0
 --- !u!114 &1705419248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,6 +973,8 @@ MonoBehaviour:
   mouseY: 0
   b_Input: 0
   rollFlag: 0
+  sprintFlag: 0
+  rollInputTimer: 0
   isInteracting: 0
 --- !u!114 &1705419249
 MonoBehaviour:

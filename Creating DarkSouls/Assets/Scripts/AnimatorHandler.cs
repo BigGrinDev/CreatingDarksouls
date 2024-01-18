@@ -23,7 +23,7 @@ namespace DS
 
         }
 
-        public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement)
+        public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement,bool isSprinting)
         {
             #region Vertical
             float v = 0;
@@ -76,6 +76,12 @@ namespace DS
                 h = 0;
             }
             #endregion
+
+            if(isSprinting)
+            {
+                v = 2;  // vertical value set to 2 in blend tree for sprinting
+                h = horizontalMovement;
+            }
 
             anim.SetFloat(vertical, v, 0.1f, Time.deltaTime);
             anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
