@@ -78,6 +78,13 @@ namespace DS
 
         }
 
+        public void PlayTargetAnimation(string targetAnim, bool isInteracting)
+        {
+            anim.applyRootMotion = isInteracting;
+            anim.SetBool("isInteracting", isInteracting);
+            anim.CrossFade(targetAnim, 0.2f);
+        }
+
         public void CanRotate()
         {
             canRotate = true;

@@ -24,8 +24,8 @@ namespace DS
         private float defaultPosition;
         private float lookAngle;
         private float pivotAngle;
-        private float minimumPivot = -35;
-        private float maximumPivot = 35;
+        [SerializeField] float minimumPivot = -35;
+        [SerializeField] float maximumPivot = 35;
 
         public float cameraSphereRadius = 0.2f;
         public float cameraCollisionOffset = 0.2f;

@@ -101,6 +101,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PlayerActions",
+            "id": "74ad2e5a-68c6-4691-8f95-4549c6e297f9",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "f6ea8e8d-3897-478a-89e8-058a918db3cd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "91ee82f1-694b-4820-a475-0dbd919fbd1e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
