@@ -15,6 +15,8 @@ namespace DS
 
         [Header("Player flags")]
         public bool isSprinting;
+        public bool isInAir;
+        public bool isGrounded;
 
         private void Awake()
         {
@@ -58,7 +60,12 @@ namespace DS
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
             isSprinting = inputHandler.b_Input;
+            
 
+            if(isInAir)
+            {
+                playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
+            }
         }
     }
 }

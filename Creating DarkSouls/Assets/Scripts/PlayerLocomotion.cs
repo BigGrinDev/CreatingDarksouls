@@ -19,10 +19,18 @@ namespace DS
         public new Rigidbody rigidbody;
         public GameObject normalCamera;
 
+        [Header("Ground & Air Detection Stats")]
+        [SerializeField] float groundDetectinRayStartPoint = 0.5f;
+        [SerializeField] float minimumDistanceNeededToBeginFall = 1f;
+        [SerializeField] float groundDirectionRayDistance = 0.2f;
+        public float inAirTimer;
+        LayerMask ignorForGroundCheck;
+
         [Header("Movement Stats")]
         [SerializeField] float movementSpeed = 5;
         [SerializeField] float sprintSpeed = 7;
         [SerializeField] float rotationSpeed = 10;
+        [SerializeField] float fallingSpeed = 45;
 
 
          private void Start()
@@ -34,6 +42,9 @@ namespace DS
             cameraObject = Camera.main.transform;
             myTransform = transform;
             animatorHandler.Initialize();
+
+            playerManager.isGrounded = true;
+            ignorForGroundCheck = ~(1 << 8 | 1 << 11);
 
          }
 
@@ -124,6 +135,25 @@ namespace DS
             }
 
 
+        }
+
+        public void HandleFalling(float delta, Vector3 moveDirection)
+        {
+            playerManager.isGrounded = false;
+            RaycastHit hit;
+            Vector3 origin = myTransform.position;
+            origin.y += groundDetectinRayStartPoint;
+            
+            if(Physics.Raycast(origin,myTransform.forward,out hit, 0.4f))
+            {
+                moveDirection = Vector3.zero;
+            }
+
+            if(playerManager.isInAir)
+            {
+                rigidbody.AddForce(-Vector3.up * fallingSpeed);
+                rigidbody.AddForce(moveDirection * fallingSpeed / 5f);
+            } 
         }
 
         #endregion
