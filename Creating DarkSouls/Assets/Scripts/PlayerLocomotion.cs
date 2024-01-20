@@ -24,7 +24,7 @@ namespace DS
         [SerializeField] float minimumDistanceNeededToBeginFall = 1f;
         [SerializeField] float groundDirectionRayDistance = 0.2f;
         public float inAirTimer;
-        LayerMask ignorForGroundCheck;
+        LayerMask ignoreForGroundCheck;
 
         [Header("Movement Stats")]
         [SerializeField] float movementSpeed = 5;
@@ -44,7 +44,7 @@ namespace DS
             animatorHandler.Initialize();
 
             playerManager.isGrounded = true;
-            LayerMask ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+            ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
 
          }
 
@@ -165,7 +165,7 @@ namespace DS
             targetPosition = myTransform.position;
 
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red, 0.1f, false);
-            if(Physics.Raycast(origin,-Vector3.up,out hit, minimumDistanceNeededToBeginFall, ignorForGroundCheck))
+            if(Physics.Raycast(origin,-Vector3.up,out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck))
             {
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
@@ -178,6 +178,7 @@ namespace DS
                     {
                         Debug.Log("You were in the air for: " + inAirTimer + ".");
                         animatorHandler.PlayTargetAnimation("Land", true);
+                        inAirTimer = 0;
                     }
                     else
                     {
