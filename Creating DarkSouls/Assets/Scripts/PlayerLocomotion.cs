@@ -155,7 +155,7 @@ namespace DS
             if(playerManager.isInAir)
             {
                 rigidbody.AddForce(-Vector3.up * fallingSpeed);
-                rigidbody.AddForce(moveDirection * fallingSpeed / 5f); //force used to jump off a ledge
+                rigidbody.AddForce(moveDirection * fallingSpeed / 10f); //force used to jump off a ledge
             }
 
             Vector3 dir = moveDirection;
@@ -182,7 +182,7 @@ namespace DS
                     }
                     else
                     {
-                        animatorHandler.PlayTargetAnimation("Empty", false);
+                        animatorHandler.PlayTargetAnimation("Locomotion", false);
                         inAirTimer = 0;
                     }
 
