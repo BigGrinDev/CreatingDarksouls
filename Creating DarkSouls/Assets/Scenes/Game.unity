@@ -2315,7 +2315,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   normalCamera: {fileID: 0}
   groundDetectinRayStartPoint: 0.5
-  minimumDistanceNeededToBeginFall: 1
+  minimumDistanceNeededToBeginFall: 0.81
   groundDirectionRayDistance: 0.2
   inAirTimer: 0
   movementSpeed: 5
