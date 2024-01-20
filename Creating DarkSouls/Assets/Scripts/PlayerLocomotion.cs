@@ -10,7 +10,7 @@ namespace DS
         Transform cameraObject;
         
         InputHandler inputHandler;
-        Vector3 moveDirection;
+        public Vector3 moveDirection;
 
         [HideInInspector] public Transform myTransform;
         [HideInInspector] public AnimatorHandler animatorHandler;
@@ -44,7 +44,7 @@ namespace DS
             animatorHandler.Initialize();
 
             playerManager.isGrounded = true;
-            ignorForGroundCheck = ~(1 << 8 | 1 << 11);
+            LayerMask ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
 
          }
 
@@ -79,6 +79,9 @@ namespace DS
         public void HandleMovement(float delta)
         {
             if (inputHandler.rollFlag)
+                return;
+
+            if (playerManager.isInteracting)
                 return;
 
             moveDirection = cameraObject.forward * inputHandler.vertical;
@@ -152,9 +155,79 @@ namespace DS
             if(playerManager.isInAir)
             {
                 rigidbody.AddForce(-Vector3.up * fallingSpeed);
-                rigidbody.AddForce(moveDirection * fallingSpeed / 5f);
-            } 
+                rigidbody.AddForce(moveDirection * fallingSpeed / 5f); //force used to jump off a ledge
+            }
+
+            Vector3 dir = moveDirection;
+            dir.Normalize();
+            origin = origin + dir * groundDirectionRayDistance;
+
+            targetPosition = myTransform.position;
+
+            Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red, 0.1f, false);
+            if(Physics.Raycast(origin,-Vector3.up,out hit, minimumDistanceNeededToBeginFall, ignorForGroundCheck))
+            {
+                normalVector = hit.normal;
+                Vector3 tp = hit.point;
+                playerManager.isGrounded = true;
+                targetPosition.y = tp.y;
+
+                if(playerManager.isInAir)
+                {
+                    if(inAirTimer > 0.5f)
+                    {
+                        Debug.Log("You were in the air for: " + inAirTimer + ".");
+                        animatorHandler.PlayTargetAnimation("Land", true);
+                    }
+                    else
+                    {
+                        animatorHandler.PlayTargetAnimation("Empty", false);
+                        inAirTimer = 0;
+                    }
+
+                    playerManager.isInAir = false;
+                }
+
+            }
+            else
+            {
+                if(playerManager.isGrounded)
+                {
+                    playerManager.isGrounded = false;
+                }
+
+                if(playerManager.isInAir == false)
+                {
+                    if(playerManager.isInteracting == false)
+                    {
+                        animatorHandler.PlayTargetAnimation("Falling", true);
+                    }
+
+                    Vector3 vel = rigidbody.velocity;
+                    vel.Normalize();
+                    rigidbody.velocity = vel * (movementSpeed / 2);
+                    playerManager.isInAir = true;
+                }
+            }
+
+            if(playerManager.isGrounded)
+            {
+                if(playerManager.isInteracting || inputHandler.moveAmount > 0)
+                {
+                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
+                }
+                else
+                {
+                    myTransform.position = targetPosition;
+                }
+            }
+
         }
+
+
+
+
+
 
         #endregion
     }
